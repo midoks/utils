@@ -5,34 +5,6 @@ import (
 	"testing"
 )
 
-// go test -bench=BenchmarkEqualSymbol -benchtime=30s -cpuprofile mapCpu.out
-// GOMAXPROCS=1 go test -bench=BenchmarkEqualSymbol -benchmem -benchtime=10s
-func BenchmarkEqualSymbol(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		t := "t"
-		if t == "t" {
-		} else {
-			b.Log("TestStringEqual ok")
-		}
-	}
-	b.StopTimer()
-}
-
-// go test -bench=BenchmarkEqualStrings -benchtime=30s -cpuprofile mapCpu.out
-// GOMAXPROCS=1 go test -bench=BenchmarkEqualStrings -benchmem -benchtime=10s
-func BenchmarkEqualStrings(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		t := "t"
-		if strings.EqualFold(t, "t") {
-		} else {
-			b.Log("TestStringEqual ok")
-		}
-	}
-	b.StopTimer()
-}
-
 func InListIsExistTmp(source string, check []string) bool {
 	for _, s := range check {
 		if strings.EqualFold(source, s) {
