@@ -13,10 +13,9 @@ func gcTime() time.Duration {
     return time.Since(start)
 }
 
-// go test -v ./ -run TestGCStackHeap -benchmem -benchtime=3s
-
-// go test -v ./ -run TestGCStackHeap_Stack -benchmem -benchtime=3s
-func TestGCStackHeap_Stack(t *testing.T) {
+// go test -v -run TestStackHeap
+// go test -v -run TestStackHeap_GC_Stack
+func TestStackHeap_GC_Stack(t *testing.T) {
     s := make(map[int]int, 5e6)
     for i := 0; i < 5e6; i++ {
         s[i] = i
@@ -25,8 +24,8 @@ func TestGCStackHeap_Stack(t *testing.T) {
     _ = s[0]
 }
 
-// go test -v ./ -run TestGCStackHeap_Stack -benchmem -benchtime=3s
-func TestGCStackHeap_Heap(t *testing.T) {
+// go test -v -run TestStackHeap_GC_Heap
+func TestStackHeap_GC_Heap(t *testing.T) {
     s := make(map[int]*int, 5e6)
     for i := 0; i < 5e6; i++ {
         s[i] = &i
