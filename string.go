@@ -2,6 +2,7 @@ package utils
 
 import (
 	// "strings"
+	"math/rand"
 	"unsafe"
 )
 
@@ -25,4 +26,22 @@ func StringToBytes(str string) []byte {
 // Byte to string, only read-only
 func BytesToString(b []byte) string {
 	return *(*string)(unsafe.Pointer(&b))
+}
+
+func RandString(len int) string {
+	bytes := make([]byte, len)
+	for i := 0; i < len; i++ {
+		b := rand.Intn(26) + 65
+		bytes[i] = byte(b)
+	}
+	return BytesToString(bytes)
+}
+
+func RandByte(len int) []byte {
+	bytes := make([]byte, len)
+	for i := 0; i < len; i++ {
+		b := rand.Intn(26) + 65
+		bytes[i] = byte(b)
+	}
+	return bytes
 }
