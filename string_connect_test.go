@@ -146,3 +146,21 @@ func BenchmarkTmpSizeFile(b *testing.B) {
     }
     b.StopTimer()
 }
+
+// GOMAXPROCS=1 go test -bench=BenchmarkVarConst -benchmem -benchtime=3s
+func BenchmarkVarConst_VAR(b *testing.B) {
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        var i = "2006-01-02 15:04:05"
+        _ = i + "1"
+    }
+    b.StopTimer()
+}
+
+func BenchmarkVarConst_Const(b *testing.B) {
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        const i = "2006-01-02 15:04:05"
+    }
+    b.StopTimer()
+}
