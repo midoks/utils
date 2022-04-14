@@ -17,6 +17,8 @@ var strs = []string{
     "you",
 }
 
+// go test -bench=. -benchmem -benchtime=1s
+
 func buildStrNaive() string {
     var s string
     for _, v := range strs {
