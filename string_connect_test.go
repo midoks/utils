@@ -98,16 +98,6 @@ func SizeFormat_Op(size float64) string {
     return strconv.FormatFloat(size, 'f', 2, 64) + units[n]
 }
 
-func SizeFormat(size float64) string {
-    var units = []string{"Byte", "KB", "MB", "GB", "TB", "PB", "EB"}
-    n := 0
-    for size > 1024 {
-        size /= 1024
-        n += 1
-    }
-    return fmt.Sprintf("%.2f", size) + units[n]
-}
-
 // GOMAXPROCS=1 go test -bench=BenchmarkTmpSize -benchmem -benchtime=3s
 func BenchmarkTmpSizeFormatOp(b *testing.B) {
     b.ResetTimer()

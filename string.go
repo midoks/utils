@@ -3,6 +3,7 @@ package utils
 import (
 	// "strings"
 	"math/rand"
+	"strconv"
 	"unsafe"
 )
 
@@ -54,4 +55,8 @@ func SizeFormat(size float64) string {
 		n += 1
 	}
 	return strconv.FormatFloat(size, 'f', 2, 32) + " " + units[n]
+}
+
+func SizeFormatTime(size float64) string {
+	return strconv.FormatFloat(size, 'f', 2, 32) + "s"
 }
