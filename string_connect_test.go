@@ -89,15 +89,17 @@ func FileSize(s int64) string {
 }
 
 func SizeFormat_Op(size float64) string {
+    var units = []string{"Byte", "KB", "MB", "GB", "TB", "PB", "EB"}
     n := 0
     for size > 1024 {
         size /= 1024
         n += 1
     }
-    return strconv.FormatFloat(size, 'f', 2, 32) + units[n]
+    return strconv.FormatFloat(size, 'f', 2, 64) + units[n]
 }
 
 func SizeFormat(size float64) string {
+    var units = []string{"Byte", "KB", "MB", "GB", "TB", "PB", "EB"}
     n := 0
     for size > 1024 {
         size /= 1024

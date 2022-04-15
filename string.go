@@ -45,3 +45,13 @@ func RandByte(len int) []byte {
 	}
 	return bytes
 }
+
+func SizeFormat(size float64) string {
+	units := []string{"Byte", "KB", "MB", "GB", "TB", "PB", "EB"}
+	n := 0
+	for size > 1024 {
+		size /= 1024
+		n += 1
+	}
+	return strconv.FormatFloat(size, 'f', 2, 32) + " " + units[n]
+}
